@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{57EA4B47-79D7-49D3-A051-D6A2E62BDA31}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>DeliPlanner.Main</StartupObject>
+    <RootNamespace>DeliPlanner</RootNamespace>
+    <AssemblyName>DeliPlanner</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>DeliPlanner.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>DeliPlanner.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>DeliPlanner.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.95.4\lib\net40\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.0.10.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.0.10\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="LogWriter">
+      <HintPath>..\..\Library\LogWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=4.0.12.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.4.0.12\lib\net45\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard1.1\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="ToaCommonFunction">
+      <HintPath>..\..\Library\ToaCommonFunction.dll</HintPath>
+    </Reference>
+    <Reference Include="ToaCustomControl, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\ToaCustomControl.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.ComponentModel" />
+    <Import Include="System.Data" />
+    <Import Include="System.Data.OleDb" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+    <Import Include="TOA" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DialogInventoryLogs.Designer.vb">
+      <DependentUpon>DialogInventoryLogs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogInventoryLogs.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogOrder.Designer.vb">
+      <DependentUpon>DialogOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogOrder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogPlan.Designer.vb">
+      <DependentUpon>DialogPlan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogPlan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogPlanPeriod.Designer.vb">
+      <DependentUpon>DialogPlanPeriod.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogPlanPeriod.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogSearchItems.Designer.vb">
+      <DependentUpon>DialogSearchItems.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogSearchItems.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogSearchSuppliers.designer.vb">
+      <DependentUpon>DialogSearchSuppliers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogSearchSuppliers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArrival.Designer.vb">
+      <DependentUpon>FormArrival.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormArrival.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArrivals.designer.vb">
+      <DependentUpon>FormArrivals.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormArrivals.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChangePassword.Designer.vb">
+      <DependentUpon>FormChangePassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormChangePassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashBoard.Designer.vb">
+      <DependentUpon>FormDashBoard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashBoard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditOperator.designer.vb">
+      <DependentUpon>FormEditOperator.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditOperator.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditOperators.designer.vb">
+      <DependentUpon>FormEditOperators.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditOperators.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditRecipes.designer.vb">
+      <DependentUpon>FormEditRecipes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditRecipes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditStores.designer.vb">
+      <DependentUpon>FormEditStores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditStores.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditSupplier.designer.vb">
+      <DependentUpon>FormEditSupplier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditSupplier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditSuppliers.designer.vb">
+      <DependentUpon>FormEditSuppliers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditSuppliers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInventoryDisposals.Designer.vb">
+      <DependentUpon>FormInventoryDisposals.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormInventoryDisposals.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPlans.Designer.vb">
+      <DependentUpon>FormPlans.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormPlans.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInstructions.Designer.vb">
+      <DependentUpon>FormInstructions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormInstructions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChangeInventory.Designer.vb">
+      <DependentUpon>FormChangeInventory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormChangeInventory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMenu.Designer.vb">
+      <DependentUpon>FormMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditItem.Designer.vb">
+      <DependentUpon>FormEditItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditStore.designer.vb">
+      <DependentUpon>FormEditStore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditStore.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOrderForecasts.Designer.vb">
+      <DependentUpon>FormOrderForecasts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormOrderForecasts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOrder.designer.vb">
+      <DependentUpon>FormOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormOrder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOrders.designer.vb">
+      <DependentUpon>FormOrders.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormOrders.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IRefreshable.vb" />
+    <Compile Include="Common.vb" />
+    <Compile Include="CustomDataGridView.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormEditItems.designer.vb">
+      <DependentUpon>FormEditItems.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditItems.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBase.designer.vb">
+      <DependentUpon>FormBase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormBase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.vb">
+      <DependentUpon>FormLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PcrsShipmentExporter.vb" />
+    <Compile Include="PlanImportFileReader.vb" />
+    <Compile Include="PlanReportExporter.vb" />
+    <Compile Include="ProcessingDialog.designer.vb">
+      <DependentUpon>ProcessingDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessingDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DialogInventoryLogs.resx">
+      <DependentUpon>DialogInventoryLogs.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogOrder.resx">
+      <DependentUpon>DialogOrder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogPlan.resx">
+      <DependentUpon>DialogPlan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogPlanPeriod.resx">
+      <DependentUpon>DialogPlanPeriod.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogSearchItems.resx">
+      <DependentUpon>DialogSearchItems.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogSearchSuppliers.resx">
+      <DependentUpon>DialogSearchSuppliers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormArrival.resx">
+      <DependentUpon>FormArrival.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormArrivals.resx">
+      <DependentUpon>FormArrivals.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChangePassword.resx">
+      <DependentUpon>FormChangePassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashBoard.resx">
+      <DependentUpon>FormDashBoard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditOperator.resx">
+      <DependentUpon>FormEditOperator.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditOperators.resx">
+      <DependentUpon>FormEditOperators.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditSupplier.resx">
+      <DependentUpon>FormEditSupplier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditSuppliers.resx">
+      <DependentUpon>FormEditSuppliers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInventoryDisposals.resx">
+      <DependentUpon>FormInventoryDisposals.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPlans.resx">
+      <DependentUpon>FormPlans.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInstructions.resx">
+      <DependentUpon>FormInstructions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChangeInventory.resx">
+      <DependentUpon>FormChangeInventory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOrderForecasts.resx">
+      <DependentUpon>FormOrderForecasts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditRecipes.resx">
+      <DependentUpon>FormEditRecipes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditStores.resx">
+      <DependentUpon>FormEditStores.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMenu.resx">
+      <DependentUpon>FormMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditItem.resx">
+      <DependentUpon>FormEditItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditStore.resx">
+      <DependentUpon>FormEditStore.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditItems.resx">
+      <DependentUpon>FormEditItems.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBase.resx">
+      <DependentUpon>FormBase.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOrder.resx">
+      <DependentUpon>FormOrder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOrders.resx">
+      <DependentUpon>FormOrders.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProcessingDialog.resx">
+      <DependentUpon>ProcessingDialog.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trashcan.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flame1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\csv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contact-new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DeliPlanner.ico" />
+    <None Include="Resources\user_edit.png" />
+    <None Include="Resources\user_go.png" />
+    <None Include="Resources\LUNEX_logo21.png" />
+    <None Include="Resources\LUNEX_logo1.jpg" />
+    <None Include="Resources\LUNEX_logo2.png" />
+    <None Include="Resources\LUNEX_logo2.jpg" />
+    <None Include="Resources\contact_blue_remove.png" />
+    <None Include="Resources\contact_grey_remove.png" />
+    <None Include="Resources\import.png" />
+    <None Include="Resources\logo.png" />
+    <None Include="Resources\copy.png" />
+    <Content Include="Resources\LUNEX_logo.jpg" />
+    <None Include="Resources\login.png" />
+    <None Include="Resources\cross.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
