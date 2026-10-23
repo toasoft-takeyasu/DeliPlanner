@@ -1,0 +1,113 @@
+-- 品目マスタ
+alter table items add constraint fk_items_itemtype
+    foreign key (itemtypeid) references itemtypes (itemtypeid);
+alter table items add constraint fk_items_unittype
+    foreign key (unittypeid) references unittypes (unittypeid);
+alter table items add constraint fk_items_pieceunittype
+    foreign key (pieceunittypeid) references unittypes (unittypeid);
+alter table items add constraint fk_items_mainsupplier
+    foreign key (mainsupplierid) references suppliers (supplierid) on delete set null;
+
+-- 仕入先マスタ
+alter table suppliers add constraint fk_suppliers_itemtype
+    foreign key (itemtypeid) references itemtypes (itemtypeid);
+
+--レシピマスタ
+alter table recipes add constraint fk_recipes_item
+    foreign key (itemid) references items (itemid);
+
+--レシピ明細マスタ
+alter table recipedetails add constraint fk_recipedetails_recipe
+    foreign key (recipeid) references recipes (recipeid) on delete cascade;
+alter table recipedetails add constraint fk_recipedetails_item
+    foreign key (itemid) references items (itemid);
+alter table recipedetails add constraint fk_recipedetails_unittype
+    foreign key (unittypeid) references unittypes (unittypeid);
+
+-- 発注データ
+alter table orders add constraint fk_orders_supplier
+    foreign key (supplierid) references suppliers (supplierid);
+
+-- 発注明細データ
+alter table orderdetails add constraint fk_orderdetails_order
+    foreign key (orderid) references orders (orderid) on delete cascade;
+alter table orderdetails add constraint fk_orderdetails_item
+    foreign key (itemid) references items (itemid);
+alter table orderdetails add constraint fk_orderdetails_unittype
+    foreign key (unittypeid) references unittypes (unittypeid);
+alter table orderdetails add constraint fk_orderdetails_netweightunittype
+    foreign key (netweightunittypeid) references unittypes (unittypeid);
+
+-- 入荷データ
+alter table arrivals add constraint fk_arrivals_supplier
+    foreign key (supplierid) references suppliers (supplierid);
+alter table arrivals add constraint fk_arrivals_order
+    foreign key (orderid) references orders (orderid) on delete set null;
+
+-- 入荷明細データ
+alter table arrivaldetails add constraint fk_arrivaldetails_arrival
+    foreign key (arrivalid) references arrivals (arrivalid) on delete cascade;
+alter table arrivaldetails add constraint fk_arrivaldetails_item
+    foreign key (itemid) references items (itemid);
+alter table arrivaldetails add constraint fk_arrivaldetails_unittype
+    foreign key (unittypeid) references unittypes (unittypeid);
+alter table arrivaldetails add constraint fk_arrivaldetails_netweightunittype
+    foreign key (netweightunittypeid) references unittypes (unittypeid);
+alter table arrivaldetails add constraint fk_arrivaldetails_pieceunittype
+    foreign key (pieceunittypeid) references unittypes (unittypeid);
+
+--製造計画データ
+alter table plans add constraint fk_plans_item
+    foreign key (itemid) references items (itemid);
+alter table plans add constraint fk_plans_unittype
+    foreign key (unittypeid) references unittypes (unittypeid);
+
+--製造計画明細データ
+alter table plandetails add constraint fk_plandetails_plan
+    foreign key (planid) references plans (planid) on delete cascade;
+alter table plandetails add constraint fk_plandetails_store
+    foreign key (storeid) references stores (storeid);
+
+--製造データ
+alter table instructions add constraint fk_instructions_plan
+    foreign key (planid) references plans (planid);
+alter table instructions add constraint fk_instructions_item
+    foreign key (itemid) references items (itemid);
+alter table instructions add constraint fk_instructions_unittype
+    foreign key (unittypeid) references unittypes (unittypeid);
+
+--製造明細データ
+alter table instructiondetails add constraint fk_instructiondetails_instruction
+    foreign key (instructionid) references instructions (instructionid) on delete cascade;
+alter table instructiondetails add constraint fk_instructiondetails_store
+    foreign key (storeid) references stores (storeid);
+
+--在庫データ
+alter table inventories add constraint fk_inventories_item
+    foreign key (itemid) references items (itemid);
+alter table inventories add constraint fk_inventories_unittype
+    foreign key (unittypeid) references unittypes (unittypeid);
+alter table inventories add constraint fk_inventories_arrivaldetail
+    foreign key (arrivaldetailid) references arrivaldetails (arrivaldetailid);
+alter table inventories add constraint fk_inventories_instruction
+    foreign key (instructionid) references instructions (instructionid);
+
+--製造消費データ
+alter table instructionconsumptions add constraint fk_consumptions_instruction
+    foreign key (instructionid) references instructions (instructionid) on delete cascade;
+alter table instructionconsumptions add constraint fk_consumptions_inventory
+    foreign key (inventoryid) references inventories (inventoryid) on delete set null;
+alter table instructionconsumptions add constraint fk_consumptions_item
+    foreign key (itemid) references items (itemid);
+alter table instructionconsumptions add constraint fk_consumptions_unittype
+    foreign key (unittypeid) references unittypes (unittypeid);
+
+--在庫履歴データ
+alter table inventorylogs add constraint fk_inventorylogs_item
+    foreign key (itemid) references items (itemid);
+alter table inventorylogs add constraint fk_inventorylogs_inventory
+    foreign key (inventoryid) references inventories (inventoryid) on delete set null;
+alter table inventorylogs add constraint fk_inventorylogs_unittype
+    foreign key (unittypeid) references unittypes (unittypeid);
+alter table inventorylogs add constraint fk_inventorylogs_operator
+    foreign key (operatorid) references operators (operatorid);

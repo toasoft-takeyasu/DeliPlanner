@@ -1,0 +1,59 @@
+-- 品目マスタ
+create index ix_items_itemtype        on items (itemtypeid);
+create index ix_items_mainsupplier    on items (mainsupplierid);
+
+--レシピマスタ
+create index ix_recipes_item          on recipes (itemid);
+
+--レシピ明細マスタ
+create index ix_recipedetails_recipe  on recipedetails (recipeid);
+create index ix_recipedetails_item    on recipedetails (itemid);
+
+-- 発注データ
+create index ix_orders_supplier       on orders (supplierid);
+
+-- 発注明細データ
+create index ix_orderdetails_order    on orderdetails (orderid);
+create index ix_orderdetails_item     on orderdetails (itemid);
+
+-- 入荷データ
+create index ix_arrivals_supplier     on arrivals (supplierid);
+create index ix_arrivals_order        on arrivals (orderid);
+
+-- 入荷明細データ
+create index ix_arrivaldetails_arrival on arrivaldetails (arrivalid);
+create index ix_arrivaldetails_item   on arrivaldetails (itemid);
+
+--製造計画明細データ
+create index ix_plandetails_plan      on plandetails (planid);
+create index ix_plandetails_store     on plandetails (storeid);
+
+--製造データ
+create index ix_instructions_item     on instructions (itemid);
+
+--製造明細データ
+create index ix_instructiondetails_instruction on instructiondetails (instructionid);
+
+--在庫データ
+create index ix_inventories_item      on inventories (itemid);
+create index ix_inventories_arrivaldetail on inventories (arrivaldetailid);
+create index ix_inventories_instruction on inventories (instructionid);
+
+--製造消費データ
+create index ix_consumptions_instruction on instructionconsumptions (instructionid);
+create index ix_consumptions_inventory on instructionconsumptions (inventoryid);
+create index ix_consumptions_item     on instructionconsumptions (itemid);
+
+--在庫履歴データ
+create index ix_inventorylogs_item    on inventorylogs (itemid);
+create index ix_inventorylogs_inventory on inventorylogs (inventoryid);
+create index ix_inventorylogs_operator on inventorylogs (operatorid);
+
+-- 画面の検索条件用
+create index ix_plans_date            on plans (plandate);
+create index ix_instructions_start    on instructions (startdate);
+create index ix_orders_arrivalplan    on orders (arrivalplandate);
+create index ix_arrivals_date         on arrivals (arrivaldate);
+create index ix_inventorylogs_date    on inventorylogs (transactiondate);
+create index ix_inventories_remain    on inventories (itemid, expirydate, arrivaldate)
+    where weight > 0;
